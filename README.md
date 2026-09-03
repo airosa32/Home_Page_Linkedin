@@ -1,69 +1,84 @@
-# Site de serviços
+# Airosa — Site de Serviços
 
-## Estrutura
+Site pessoal de **Tiago Airosa**, reunindo as frentes de atuação em um só lugar: Análise de Dados & IA, Desenvolvimento de Software, Engenharia de Processos, Automação e Suporte Técnico.
+
+Construído em **HTML, CSS e JavaScript puro** — sem framework, sem build, sem dependência de servidor. Hospedado gratuitamente no GitHub Pages.
+
+---
+
+## Estrutura de arquivos
+
 ```
-index.html          → Home
-sobre.html           → Sobre
-faq.html              → Perguntas frequentes
-contato.html          → Contato
+index.html                 → Home
+sobre.html                  → Sobre (trajetória, experiência, ferramentas)
+faq.html                     → Perguntas frequentes
+contato.html                 → Contato (formulário + canais + chat)
 servicos/
   dados-ia.html
   desenvolvimento.html
   processos.html
   automacao.html
   suporte.html
-css/style.css         → todo o estilo do site
-js/main.js             → menu mobile, parallax e animações de entrada
+css/
+  style.css                  → todo o estilo do site (design system, animações)
+js/
+  main.js                     → menu lateral, parallax, reveal on scroll, botões, cards
+  chat-widget.js               → widget de chat (assistente de IA)
 ```
 
-## Como publicar no GitHub Pages
-1. Crie um repositório novo no GitHub (ex: `meu-site`).
-2. Suba todos esses arquivos e pastas pra raiz do repositório (mantendo a estrutura acima).
-3. No repositório, vá em **Settings → Pages**.
-4. Em "Source", selecione a branch `main` e a pasta `/ (root)`.
-5. Salve. Em alguns minutos o site fica no ar em `https://seu-usuario.github.io/meu-site/`.
+---
 
-## Como testar localmente antes de subir
-Não dá pra abrir o `index.html` direto no navegador com duplo clique em alguns casos (o menu/parallax funcionam, mas é mais seguro rodar um servidor local):
+## Como rodar localmente
+
+Abrir o `index.html` direto com duplo clique pode não funcionar 100% (menu, parallax etc.). O mais seguro é subir um servidor local simples:
 
 ```bash
 # dentro da pasta do site
 python3 -m http.server 8000
 ```
-Depois abra `http://localhost:8000` no navegador.
 
-## Formulário de contato — como ativar (recebe por e-mail)
-O GitHub Pages **não tem backend** (não roda Python, PHP, etc.), então o formulário sozinho não consegue mandar e-mail. Ele já está pronto pra usar o [Formspree](https://formspree.io) (grátis até 50 mensagens/mês, chega direto no seu e-mail) — só falta o seu ID:
+Depois acesse `http://localhost:8000` no navegador.
 
-1. Crie uma conta grátis em [formspree.io](https://formspree.io) usando o e-mail `airosa32@gmail.com` (ou o que preferir receber).
-2. Crie um novo formulário ("New Form") — o Formspree te dá um endpoint tipo `https://formspree.io/f/xxxxxxx`.
-3. No arquivo `contato.html`, ache a linha:
-```html
-<form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/SEU_ID_AQUI" method="POST">
-```
-e troque `SEU_ID_AQUI` pelo código que o Formspree te deu.
-4. Pronto — o formulário já está programado pra: mostrar "Enviando...", confirmar com um ícone de sucesso (verde) se der certo, ou avisar com um ícone de aviso (laranja) se falhar, tudo automaticamente. Não precisa mexer em mais nada.
+---
 
-Enquanto o `SEU_ID_AQUI` não for trocado, o site mostra uma mensagem educada avisando que ainda não está conectado, em vez de fingir que enviou.
+## Como publicar (GitHub Pages)
 
-## O que falta preencher (marcado no código como texto entre colchetes)
-- `sobre.html`: sua trajetória/formação real
-- `faq.html`: as respostas de cada pergunta
-- `contato.html`: número de WhatsApp, e-mail e LinkedIn reais
-- Nome da marca: hoje está como "seunome" em todas as páginas (logo e rodapé) — trocar pelo nome definitivo
+Repositório: [`airosa32/Home_Page_Linkedin`](https://github.com/airosa32/Home_Page_Linkedin)
 
-## Agente de IA (widget de chat)
+1. Envie todos os arquivos e pastas pra raiz do repositório (`git add . && git commit -m "..." && git push`).
+2. No repositório, vá em **Settings → Pages**.
+3. Em "Source", selecione a branch `main` e a pasta `/ (root)`.
+4. Salve. Em 1–2 minutos o site fica no ar em:
+   **https://airosa32.github.io/Home_Page_Linkedin/**
 
-O site já tem um widget de chat completo (botão flutuante no canto inferior direito, com painel, indicador de "digitando" e histórico de mensagens). A interface está 100% pronta — o que falta é conectar a um serviço de IA de verdade.
+---
 
-### Por que não vem já conectado
-GitHub Pages não roda nenhum código no servidor. Se a chave de API de um serviço de IA (Claude, GPT, etc.) fosse colocada direto no `js/chat-widget.js`, qualquer pessoa que abrisse o "Ver código-fonte" da página conseguiria roubar essa chave. Por isso o widget está com o endpoint vazio (`AIROSA_CHAT_ENDPOINT = ''`) e mostra uma mensagem explicando isso, em vez de fingir que está funcionando.
+## Formulário de contato (recebe por e-mail via Formspree)
 
-### Como ativar de verdade (gratuito)
-A forma mais simples e segura é criar um pequeno "proxy" que guarda a chave escondida e só repassa a pergunta pra IA. Um jeito rápido é usar **Cloudflare Workers** (tem plano gratuito generoso):
+O GitHub Pages não roda backend, então o formulário sozinho não manda e-mail. Ele já está programado pra usar o [Formspree](https://formspree.io) (grátis até 50 mensagens/mês) — falta só o ID:
+
+1. Crie uma conta grátis em [formspree.io](https://formspree.io) com o e-mail `airosa32@gmail.com`.
+2. Crie um novo formulário — você recebe um endpoint tipo `https://formspree.io/f/xxxxxxx`.
+3. Em `contato.html`, troque `SEU_ID_AQUI` pelo código recebido, na linha:
+   ```html
+   <form ... action="https://formspree.io/f/SEU_ID_AQUI" method="POST">
+   ```
+4. Pronto — o formulário já mostra "Enviando...", confirma com ícone verde se der certo, ou avisa com ícone laranja se falhar. Nada mais precisa ser feito no código.
+
+**Status atual:** endpoint ainda não configurado (`SEU_ID_AQUI` no lugar do ID real).
+
+---
+
+## Assistente de IA (widget de chat)
+
+O site tem um widget de chat completo (botão flutuante, painel, indicador de "digitando", histórico de mensagens) em `js/chat-widget.js`. A interface está pronta — falta conectar a um serviço de IA de verdade.
+
+**Por quê não vem conectado:** colocar uma chave de API de IA direto no JavaScript exporia essa chave pra qualquer visitante que abrisse "Ver código-fonte" da página. Por segurança, o endpoint fica vazio até ser configurado.
+
+### Como ativar (gratuito, via Cloudflare Workers)
 
 1. Crie uma conta em [workers.cloudflare.com](https://workers.cloudflare.com).
-2. Crie um novo Worker com um código parecido com este (exemplo usando a API da Anthropic):
+2. Crie um novo Worker com este código (exemplo usando a API da Anthropic):
 
 ```js
 export default {
@@ -100,16 +115,31 @@ export default {
 };
 ```
 
-3. Nas configurações do Worker, adicione a variável secreta `ANTHROPIC_API_KEY` com sua chave da [console.anthropic.com](https://console.anthropic.com).
-4. Publique o Worker — você vai receber uma URL tipo `https://airosa-chat.SEU-USUARIO.workers.dev`.
-5. No arquivo `js/chat-widget.js`, troque a linha:
-```js
-const AIROSA_CHAT_ENDPOINT = '';
-```
-por:
-```js
-const AIROSA_CHAT_ENDPOINT = 'https://airosa-chat.SEU-USUARIO.workers.dev';
-```
-6. Pronto — o widget passa a responder de verdade.
+3. Adicione a variável secreta `ANTHROPIC_API_KEY` nas configurações do Worker, com a chave gerada em [console.anthropic.com](https://console.anthropic.com).
+4. Publique — você recebe uma URL tipo `https://airosa-chat.SEU-USUARIO.workers.dev`.
+5. Em `js/chat-widget.js`, troque:
+   ```js
+   const AIROSA_CHAT_ENDPOINT = '';
+   ```
+   por:
+   ```js
+   const AIROSA_CHAT_ENDPOINT = 'https://airosa-chat.SEU-USUARIO.workers.dev';
+   ```
 
-Esse mesmo esquema funciona com qualquer outro provedor de IA (OpenAI, Gemini, etc.) — só muda a URL e o formato do corpo da requisição dentro do Worker.
+Esse mesmo esquema funciona com qualquer outro provedor de IA (OpenAI, Gemini, etc.) — só muda a URL e o corpo da requisição dentro do Worker.
+
+**Status atual:** endpoint vazio, widget funcional só como interface.
+
+---
+
+## Pendências
+
+- [ ] Configurar o ID do Formspree em `contato.html`
+- [ ] Conectar o endpoint de IA em `js/chat-widget.js` (opcional)
+- [ ] Trocar as imagens/painéis decorativos por fotos ou cases reais, se desejado
+
+---
+
+## Créditos
+
+Desenvolvido para **Tiago Airosa** — [LinkedIn](https://www.linkedin.com/in/tiago-airosa) · [GitHub](https://github.com/airosa32)
