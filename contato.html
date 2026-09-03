@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contato — Airosa</title>
+<meta name="description" content="Fale sobre seu desafio e receba um diagnóstico.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="scroll-progress" aria-hidden="true"><div class="scroll-progress-bar"></div></div>
+<div class="bg-ambient" aria-hidden="true">
+  <span class="a1"></span>
+  <span class="a2"></span>
+  <span class="a3"></span>
+</div>
+<button class="menu-toggle" aria-label="Abrir menu"><span class="hamburger"><span></span><span></span><span></span></span></button>
+<aside class="sidebar">
+  <div class="sidebar-top">
+    <a href="index.html" class="logo">Air<span>osa</span></a>
+    <button class="sidebar-close" aria-label="Fechar menu">×</button>
+  </div>
+  <nav class="side-nav">
+    <a href="index.html" class="side-link"><span class="side-dot"></span>Início</a>
+      <a href="sobre.html" class="side-link"><span class="side-dot"></span>Sobre</a>
+    <div class="side-group-label">Soluções</div>
+    <a href="servicos/dados-ia.html" class="side-link"><span class="side-dot"></span>Dados & IA</a>
+      <a href="servicos/desenvolvimento.html" class="side-link"><span class="side-dot"></span>Desenvolvimento</a>
+      <a href="servicos/processos.html" class="side-link"><span class="side-dot"></span>Engenharia de processos</a>
+      <a href="servicos/automacao.html" class="side-link"><span class="side-dot"></span>Automação</a>
+      <a href="servicos/suporte.html" class="side-link"><span class="side-dot"></span>Suporte técnico</a>
+    <a href="faq.html" class="side-link"><span class="side-dot"></span>FAQ</a>
+  </nav>
+  <a href="contato.html" class="btn btn-primary sidebar-cta">Fale conosco</a>
+</aside>
+<div class="sidebar-overlay"></div>
+<main class="main-content">
+
+<section class="page-hero">
+  <div class="container">
+    <span class="eyebrow c-coral hero-enter">Contato</span>
+    <h1 class="hero-enter">Vamos conversar sobre o seu desafio</h1>
+    <p class="lead hero-enter">Preenche o formulário ou chama direto no WhatsApp. Respondo rápido.</p>
+  </div>
+</section>
+<section>
+  <div class="container">
+    <div class="contact-grid">
+      <form class="contact-form reveal" id="contactForm" action="https://formspree.io/f/SEU_ID_AQUI" method="POST">
+        <input type="hidden" name="_subject" value="Novo contato pelo site — Airosa">
+        <div class="field"><label for="nome">Nome</label><input type="text" id="nome" name="nome" required></div>
+        <div class="field"><label for="email">E-mail</label><input type="email" id="email" name="email" required></div>
+        <div class="field"><label for="whatsapp">WhatsApp</label><input type="tel" id="whatsapp" name="whatsapp" placeholder="(00) 00000-0000"></div>
+        <div class="field">
+          <label for="servico">Serviço de interesse</label>
+          <select id="servico" name="servico">
+            <option value="">Selecione</option>
+            <option>Dados &amp; IA</option><option>Desenvolvimento</option><option>Engenharia de processos</option>
+            <option>Automação</option><option>Suporte técnico</option><option>Ainda não sei</option>
+          </select>
+        </div>
+        <div class="field"><label for="mensagem">Mensagem</label><textarea id="mensagem" name="mensagem" required></textarea></div>
+        <button type="submit" class="btn btn-primary" id="submitBtn"><span class="btn-label">Enviar mensagem</span></button>
+        <div id="formNote" class="form-note"></div>
+      </form>
+      <div class="side-card reveal">
+        <h3>Canais de contato</h3>
+        <div class="channel-list">
+          <a href="https://wa.me/5512988082556" class="channel-row" target="_blank" rel="noopener">
+            <div class="icon-badge purple"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4V5z"/></svg></div>
+            <div><div class="channel-label">WhatsApp</div>+55 12 98808-2556</div>
+          </a>
+          <a href="mailto:airosa32@gmail.com" class="channel-row">
+            <div class="icon-badge teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+            <div><div class="channel-label">E-mail</div>airosa32@gmail.com</div>
+          </a>
+          <a href="https://www.linkedin.com/in/tiago-airosa" class="channel-row" target="_blank" rel="noopener">
+            <div class="icon-badge coral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6-6"/><path d="M8 12l-2 2a3 3 0 0 0 4 4l2-2"/><path d="M16 12l2-2a3 3 0 0 0-4-4l-2 2"/></svg></div>
+            <div><div class="channel-label">LinkedIn</div>/tiago-airosa</div>
+          </a>
+          <a href="https://github.com/airosa32" class="channel-row" target="_blank" rel="noopener">
+            <div class="icon-badge amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-4.3 1.4-4.3-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2-.2 4.5-1 4.5-4.5 0-1-.5-2-1-2.5.2-.5.5-1.5 0-3 0 0-1 0-2.5 1.2A9 9 0 0 0 12 5.5a9 9 0 0 0-3.5.5C7 4.8 6 4.8 6 4.8c-.5 1.5-.2 2.5 0 3-.5.5-1 1.5-1 2.5 0 3.5 2.5 4.3 4.5 4.5-.6.6-.5 1-.5 2V21"/></svg></div>
+            <div><div class="channel-label">GitHub</div>/airosa32</div>
+          </a>
+        </div>
+        <div class="side-card-visual">
+          <div class="visual-panel purple" role="img" aria-label="Sempre por perto">
+        <div class="vp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4V5z"/></svg></div>
+        <span class="vp-dot d1"></span>
+        <span class="vp-dot d2"></span>
+        <span class="vp-dot d3"></span>
+        <span class="vp-dot d4"></span>
+      </div>
+        </div>
+        <div class="availability">
+          <span class="pulse-dot"></span>
+          <div><div class="channel-label" style="margin-bottom:1px;">Disponibilidade</div>Todos os dias, das 7h às 22h</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  const contactForm = document.getElementById('contactForm');
+  const submitBtn = document.getElementById('submitBtn');
+  const btnLabel = submitBtn.querySelector('.btn-label');
+  const formNote = document.getElementById('formNote');
+
+  const iconInfo = '<svg class="note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8v5"/><circle cx="12" cy="16" r="0.5" fill="currentColor"/></svg>';
+  const iconCheck = '<svg class="note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M8 12l3 3 5-6"/></svg>';
+  const iconWarn = '<svg class="note-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"/><circle cx="12" cy="16.5" r="0.5" fill="currentColor"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>';
+
+  function setNote(icon, text, cls) {
+    formNote.innerHTML = icon + '<span>' + text + '</span>';
+    formNote.className = 'form-note show ' + cls;
+  }
+
+  contactForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const endpoint = contactForm.getAttribute('action');
+
+    submitBtn.disabled = true;
+    btnLabel.textContent = 'Enviando...';
+    submitBtn.classList.add('sending');
+
+    // Endpoint ainda não configurado — veja o README pra ativar o envio por e-mail
+    if (!endpoint || endpoint.indexOf('SEU_ID_AQUI') !== -1) {
+      setTimeout(function () {
+        submitBtn.disabled = false;
+        btnLabel.textContent = 'Enviar mensagem';
+        submitBtn.classList.remove('sending');
+        setNote(iconInfo, 'Formulário ainda não conectado a um serviço de envio. Veja o README pra ativar o envio por e-mail.', 'info');
+      }, 650);
+      return;
+    }
+
+    try {
+      const res = await fetch(endpoint, {
+        method: 'POST',
+        body: new FormData(contactForm),
+        headers: { 'Accept': 'application/json' },
+      });
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('sending');
+      btnLabel.textContent = 'Enviar mensagem';
+      if (res.ok) {
+        setNote(iconCheck, 'Mensagem enviada! Você recebe uma resposta em breve.', 'success');
+        contactForm.reset();
+      } else {
+        setNote(iconWarn, 'Não foi possível enviar agora. Tenta de novo ou chama no WhatsApp.', 'error');
+      }
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('sending');
+      btnLabel.textContent = 'Enviar mensagem';
+      setNote(iconWarn, 'Não foi possível enviar agora. Tenta de novo ou chama no WhatsApp.', 'error');
+    }
+  });
+</script>
+
+</main>
+<div class="chat-widget" id="chatWidget">
+  <button class="chat-toggle" id="chatToggle" aria-label="Abrir chat de suporte">
+    <svg class="chat-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4V5z"/></svg>
+    <svg class="chat-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    <span class="chat-toggle-dot"></span>
+  </button>
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar">A</div>
+        <div>
+          <div class="chat-title">Assistente Airosa</div>
+          <div class="chat-status"><span class="chat-status-dot"></span>Online</div>
+        </div>
+      </div>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg bot">Oi! Posso ajudar a entender qual serviço faz mais sentido pro seu caso. O que você precisa?</div>
+    </div>
+    <form class="chat-input-row" id="chatForm">
+      <input type="text" id="chatInput" placeholder="Digite sua pergunta..." autocomplete="off">
+      <button type="submit" class="chat-send" aria-label="Enviar mensagem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+      </button>
+    </form>
+  </div>
+</div>
+<footer class="site-footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <a href="index.html" class="logo">Air<span>osa</span></a>
+        <p style="margin-top:10px; font-size:14px;">Análise de dados nível enterprise aplicada em desenvolvimento, automação e infraestrutura.</p>
+      </div>
+      <div>
+        <h4>Soluções</h4>
+        <div class="footer-links">
+          <a href="servicos/dados-ia.html">Dados &amp; IA</a>
+          <a href="servicos/desenvolvimento.html">Desenvolvimento</a>
+          <a href="servicos/processos.html">Engenharia de processos</a>
+          <a href="servicos/automacao.html">Automação</a>
+          <a href="servicos/suporte.html">Suporte técnico</a>
+        </div>
+      </div>
+      <div>
+        <h4>Empresa</h4>
+        <div class="footer-links">
+          <a href="sobre.html">Sobre</a>
+          <a href="faq.html">FAQ</a>
+          <a href="contato.html">Contato</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">© 2026 Airosa. Todos os direitos reservados.</div>
+  </div>
+</footer>
+<script src="js/main.js"></script>
+<script src="js/chat-widget.js"></script>
+</body>
+</html>
