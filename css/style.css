@@ -1024,6 +1024,18 @@ form.contact-form { display: flex; flex-direction: column; gap: 14px; }
 .side-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--brand); opacity: 0; flex-shrink: 0; }
 
 .sidebar-cta { margin-top: 18px; justify-content: center; }
+.sidebar-cta.current::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 30%, rgba(255,255,255,0.4) 50%, transparent 70%);
+  background-size: 250% 100%;
+  animation: sideWind 3.2s linear infinite;
+  pointer-events: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .sidebar-cta.current::after { animation: none; display: none; }
+}
 
 .mobile-topbar {
   display: none;

@@ -18,7 +18,15 @@ const overlay = document.querySelector('.sidebar-overlay');
 function openSidebar() { sidebar?.classList.add('open'); overlay?.classList.add('show'); menuToggle?.classList.add('open'); }
 function closeSidebar() { sidebar?.classList.remove('open'); overlay?.classList.remove('show'); menuToggle?.classList.remove('open'); }
 
-menuToggle?.addEventListener('click', openSidebar);
+function toggleSidebar() {
+  if (sidebar?.classList.contains('open')) {
+    closeSidebar();
+  } else {
+    openSidebar();
+  }
+}
+
+menuToggle?.addEventListener('click', toggleSidebar);
 sidebarClose?.addEventListener('click', closeSidebar);
 overlay?.addEventListener('click', closeSidebar);
 document.querySelectorAll('.side-link').forEach((link) => link.addEventListener('click', closeSidebar));
