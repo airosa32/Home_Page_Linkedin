@@ -28,7 +28,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
 
 /* Foco visível pra quem navega pelo teclado (Tab) — sem isso, é
    impossível saber em qual elemento você está. Só aparece com
@@ -432,6 +432,8 @@ body {
   font-size: 16px;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  max-width: 100%;
 }
 
 /* Tom de fundo sutil por categoria — cada página de serviço ganha
@@ -542,26 +544,9 @@ p { margin: 0 0 1em; color: var(--text-dim); max-width: 62ch; }
 }
 .btn-ghost:hover { background: var(--surface); border-color: var(--text-faint); }
 
-/* ===== Header ===== */
-.site-header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(11, 18, 32, 0.85);
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid var(--border);
-}
-
-.site-header .container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  height: 72px;
-}
-
 .logo {
   font-family: var(--font-head);
-  font-size: 19px;
+  font-size: 23px;
   font-weight: 600;
   color: var(--text);
 }
@@ -581,52 +566,6 @@ p { margin: 0 0 1em; color: var(--text-dim); max-width: 62ch; }
 @media (prefers-reduced-motion: reduce) {
   .logo span { animation: none; background: none; -webkit-text-fill-color: var(--brand); color: var(--brand); }
 }
-
-.nav-links {
-  display: flex;
-  align-items: center;
-  gap: 30px;
-}
-.nav-links a {
-  font-size: 14.5px;
-  color: var(--text-dim);
-  transition: color 0.15s ease;
-}
-.nav-links a:hover { color: var(--text); }
-
-.nav-cta { display: none; }
-@media (min-width: 860px) { .nav-cta { display: inline-flex; } }
-
-.menu-toggle {
-  display: flex;
-  background: none;
-  border: 1px solid var(--border);
-  border-radius: 8px;
-  padding: 8px 10px;
-  color: var(--text);
-  cursor: pointer;
-}
-@media (min-width: 860px) { .menu-toggle { display: none; } }
-
-.nav-links { display: none; }
-@media (min-width: 860px) { .nav-links { display: flex; } }
-
-.mobile-menu {
-  display: none;
-  flex-direction: column;
-  gap: 4px;
-  padding: 14px 24px 22px;
-  border-top: 1px solid var(--border);
-  background: var(--bg-soft);
-}
-.mobile-menu.open { display: flex; }
-.mobile-menu a {
-  padding: 12px 6px;
-  font-size: 15px;
-  color: var(--text-dim);
-  border-bottom: 1px solid var(--border);
-}
-.mobile-menu a:last-child { border-bottom: none; }
 
 /* ===== Hero / parallax ===== */
 .hero {
@@ -1031,6 +970,9 @@ form.contact-form { display: flex; flex-direction: column; gap: 14px; }
   justify-content: space-between;
   margin-bottom: 26px;
 }
+@media (min-width: 960px) {
+  .sidebar-top { justify-content: center; margin-bottom: 34px; }
+}
 .sidebar-close {
   background: none; border: none; color: var(--text-dim);
   font-size: 20px; cursor: pointer; display: block;
@@ -1053,8 +995,32 @@ form.contact-form { display: flex; flex-direction: column; gap: 14px; }
   transition: background 0.15s ease, color 0.15s ease;
 }
 .side-link:hover { background: var(--surface); color: var(--text); }
-.side-link.active { background: var(--surface-2); color: var(--text); font-weight: 600; }
+.side-link.active {
+  position: relative;
+  overflow: hidden;
+  background: var(--surface-2);
+  color: var(--text);
+  font-weight: 600;
+}
 .side-link.active .side-dot { opacity: 1; }
+/* Efeito de "vento": uma faixa de luz atravessa o item ativo em
+   loop contínuo, dando vida a quem está selecionado no momento. */
+.side-link.active::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 30%, rgba(127,90,255,0.4) 50%, transparent 70%);
+  background-size: 250% 100%;
+  animation: sideWind 3.2s linear infinite;
+  pointer-events: none;
+}
+@keyframes sideWind {
+  0%   { background-position: 140% 0; }
+  100% { background-position: -140% 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .side-link.active::after { animation: none; display: none; }
+}
 .side-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--brand); opacity: 0; flex-shrink: 0; }
 
 .sidebar-cta { margin-top: 18px; justify-content: center; }
