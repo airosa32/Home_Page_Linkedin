@@ -1,5 +1,4 @@
 // ===== Barra de progresso de leitura =====
-var xx;
 const scrollBar = document.querySelector('.scroll-progress-bar');
 function updateScrollProgress() {
   const h = document.documentElement;
