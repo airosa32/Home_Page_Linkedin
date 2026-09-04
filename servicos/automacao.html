@@ -5,15 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Automação — Python e n8n</title>
 <meta name="description" content="Automação de processos simples ou complexos com Python e n8n.">
+
+<!-- Open Graph — usado por LinkedIn, WhatsApp, Facebook etc. pra montar
+     o preview quando o link é compartilhado. og:image precisa ser uma
+     URL absoluta (o crawler busca direto, sem carregar o resto do site). -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Airosa">
+<meta property="og:title" content="Automação — Python e n8n">
+<meta property="og:description" content="Automação de processos simples ou complexos com Python e n8n.">
+<meta property="og:image" content="https://airosa32.github.io/Home_Page_Linkedin/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://airosa32.github.io/Home_Page_Linkedin/">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Automação — Python e n8n">
+<meta name="twitter:description" content="Automação de processos simples ou complexos com Python e n8n.">
+<meta name="twitter:image" content="https://airosa32.github.io/Home_Page_Linkedin/og-image.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body class="tint-amber">
+<div class="scroll-progress" aria-hidden="true"><div class="scroll-progress-bar"></div></div>
 <div class="bg-ambient" aria-hidden="true">
   <span class="a1"></span>
+
   <span class="a2"></span>
   <span class="a3"></span>
+
 </div>
 <button class="menu-toggle" aria-label="Abrir menu"><span class="hamburger"><span></span><span></span><span></span></span></button>
 <aside class="sidebar">
@@ -59,19 +80,19 @@
   <div class="container">
     
     <div class="service-list">
-      <div class="service-item reveal">
+      <div class="service-item reveal-left">
         <div class="icon-badge amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6L3 12l6 6"/><path d="M15 6l6 6-6 6"/></svg></div>
         <h3>Automação com Python</h3>
         <p>Scripts sob medida pra tarefas específicas: extração de dados, envio de relatórios, integração entre sistemas.</p>
         <div class="who"><b>Pra quem é:</b> quem tem uma tarefa manual e repetitiva bem definida.</div>
       </div>
-      <div class="service-item reveal">
+      <div class="service-item reveal-right">
         <div class="icon-badge amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><circle cx="19" cy="6" r="2.4"/><circle cx="12" cy="18" r="2.4"/><path d="M7 7.5L11 16"/><path d="M17 7.5L13 16"/></svg></div>
         <h3>Automação com n8n</h3>
         <p>Fluxos visuais conectando ferramentas (planilhas, e-mail, WhatsApp, CRMs, etc.).</p>
         <div class="who"><b>Pra quem é:</b> quem quer conectar vários sistemas sem codar do zero.</div>
       </div>
-      <div class="service-item reveal">
+      <div class="service-item reveal-left">
         <div class="icon-badge amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 15l6-6"/><path d="M8 12l-2 2a3 3 0 0 0 4 4l2-2"/><path d="M16 12l2-2a3 3 0 0 0-4-4l-2 2"/></svg></div>
         <h3>Integrações entre sistemas</h3>
         <p>Conexão entre plataformas que hoje não conversam entre si (ex: site + planilha + WhatsApp + CRM).</p>
@@ -80,6 +101,8 @@
     </div>
   </div>
 </section>
+
+<div class="container"><div class="section-divider amber"></div></div>
 
 <section>
   <div class="container">
@@ -100,6 +123,8 @@
   </div>
 </section>
 
+<div class="container"><div class="section-divider amber"></div></div>
+
 <section>
   <div class="container">
     <div class="cta-banner reveal">
@@ -111,6 +136,33 @@
 </section>
 
 </main>
+<div class="chat-widget" id="chatWidget">
+  <button class="chat-toggle" id="chatToggle" aria-label="Abrir chat de suporte">
+    <svg class="chat-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4V5z"/></svg>
+    <svg class="chat-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    <span class="chat-toggle-dot"></span>
+  </button>
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar">A</div>
+        <div>
+          <div class="chat-title">Assistente Airosa</div>
+          <div class="chat-status"><span class="chat-status-dot"></span>Online</div>
+        </div>
+      </div>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg bot">Oi! Posso ajudar a entender qual serviço faz mais sentido pro seu caso. O que você precisa?</div>
+    </div>
+    <form class="chat-input-row" id="chatForm">
+      <input type="text" id="chatInput" placeholder="Digite sua pergunta..." autocomplete="off">
+      <button type="submit" class="chat-send" aria-label="Enviar mensagem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+      </button>
+    </form>
+  </div>
+</div>
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
@@ -141,5 +193,6 @@
   </div>
 </footer>
 <script src="../js/main.js"></script>
+<script src="../js/chat-widget.js"></script>
 </body>
 </html>

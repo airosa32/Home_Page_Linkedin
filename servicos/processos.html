@@ -5,15 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Engenharia de Processos & Performance</title>
 <meta name="description" content="Mapeamento de fluxo, padronização e maximização de velocidade com fundamentos de ciência da computação.">
+
+<!-- Open Graph — usado por LinkedIn, WhatsApp, Facebook etc. pra montar
+     o preview quando o link é compartilhado. og:image precisa ser uma
+     URL absoluta (o crawler busca direto, sem carregar o resto do site). -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Airosa">
+<meta property="og:title" content="Engenharia de Processos & Performance">
+<meta property="og:description" content="Mapeamento de fluxo, padronização e maximização de velocidade com fundamentos de ciência da computação.">
+<meta property="og:image" content="https://airosa32.github.io/Home_Page_Linkedin/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://airosa32.github.io/Home_Page_Linkedin/">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Engenharia de Processos & Performance">
+<meta name="twitter:description" content="Mapeamento de fluxo, padronização e maximização de velocidade com fundamentos de ciência da computação.">
+<meta name="twitter:image" content="https://airosa32.github.io/Home_Page_Linkedin/og-image.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body class="tint-coral">
+<div class="scroll-progress" aria-hidden="true"><div class="scroll-progress-bar"></div></div>
 <div class="bg-ambient" aria-hidden="true">
   <span class="a1"></span>
+
   <span class="a2"></span>
   <span class="a3"></span>
+
 </div>
 <button class="menu-toggle" aria-label="Abrir menu"><span class="hamburger"><span></span><span></span><span></span></span></button>
 <aside class="sidebar">
@@ -59,19 +80,19 @@
   <div class="container">
     <div class="callout reveal" style="margin-bottom:36px;"><p><b style="color:var(--text);">Mapear sem chegar numa decisão é só um desenho bonito.</b> Aqui o processo passa pelos quatro níveis: como o fluxo é hoje, onde está o gargalo, o que acontece se não mudar, e o que redesenhar.</p></div>
     <div class="service-list">
-      <div class="service-item reveal">
+      <div class="service-item reveal-left">
         <div class="icon-badge coral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><circle cx="19" cy="6" r="2.4"/><circle cx="12" cy="18" r="2.4"/><path d="M7 7.5L11 16"/><path d="M17 7.5L13 16"/></svg></div>
         <h3>Mapeamento de fluxo</h3>
         <p>Mapeamento do processo atual (fluxograma real, levantado na prática, não achismo), identificando cada etapa e onde ela trava.</p>
         <div class="who"><b>Pra quem é:</b> equipes que nunca pararam pra desenhar como o processo realmente funciona.</div>
       </div>
-      <div class="service-item reveal">
+      <div class="service-item reveal-right">
         <div class="icon-badge coral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="8" height="8" rx="1"/><rect x="13" y="3" width="8" height="8" rx="1"/><rect x="3" y="13" width="8" height="8" rx="1"/><rect x="13" y="13" width="8" height="8" rx="1"/></svg></div>
         <h3>Padronização</h3>
         <p>Definição de um padrão único pro processo/código/fluxo, eliminando retrabalho e "cada um faz de um jeito".</p>
         <div class="who"><b>Pra quem é:</b> times ou processos que cresceram sem regra clara.</div>
       </div>
-      <div class="service-item reveal">
+      <div class="service-item reveal-left">
         <div class="icon-badge coral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></div>
         <h3>Maximização de velocidade</h3>
         <p>Otimização de performance de processos e sistemas já existentes, aplicando complexidade algorítmica, estrutura de dados e arquitetura pra reduzir tempo de execução de verdade.</p>
@@ -80,6 +101,8 @@
     </div>
   </div>
 </section>
+
+<div class="container"><div class="section-divider coral"></div></div>
 
 <section>
   <div class="container">
@@ -100,6 +123,8 @@
   </div>
 </section>
 
+<div class="container"><div class="section-divider coral"></div></div>
+
 <section>
   <div class="container">
     <div class="cta-banner reveal">
@@ -111,6 +136,33 @@
 </section>
 
 </main>
+<div class="chat-widget" id="chatWidget">
+  <button class="chat-toggle" id="chatToggle" aria-label="Abrir chat de suporte">
+    <svg class="chat-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4V5z"/></svg>
+    <svg class="chat-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    <span class="chat-toggle-dot"></span>
+  </button>
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar">A</div>
+        <div>
+          <div class="chat-title">Assistente Airosa</div>
+          <div class="chat-status"><span class="chat-status-dot"></span>Online</div>
+        </div>
+      </div>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg bot">Oi! Posso ajudar a entender qual serviço faz mais sentido pro seu caso. O que você precisa?</div>
+    </div>
+    <form class="chat-input-row" id="chatForm">
+      <input type="text" id="chatInput" placeholder="Digite sua pergunta..." autocomplete="off">
+      <button type="submit" class="chat-send" aria-label="Enviar mensagem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+      </button>
+    </form>
+  </div>
+</div>
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
@@ -141,5 +193,6 @@
   </div>
 </footer>
 <script src="../js/main.js"></script>
+<script src="../js/chat-widget.js"></script>
 </body>
 </html>

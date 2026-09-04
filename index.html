@@ -31,11 +31,15 @@
 <div class="scroll-progress" aria-hidden="true"><div class="scroll-progress-bar"></div></div>
 <div class="bg-ambient" aria-hidden="true">
   <span class="a1"></span>
+
   <span class="a2"></span>
   <span class="a3"></span>
 
 </div>
-<button class="menu-toggle" aria-label="Abrir menu"><span class="hamburger"><span></span><span></span><span></span></span></button>
+<div class="mobile-topbar">
+  <a href="index.html" class="logo mobile-logo">Air<span>osa</span></a>
+  <button class="menu-toggle" aria-label="Abrir menu"><span class="hamburger"><span></span><span></span><span></span></span></button>
+</div>
 <aside class="sidebar">
   <div class="sidebar-top">
     <a href="index.html" class="logo">Air<span>osa</span></a>
@@ -104,7 +108,7 @@
       <h2>Do dado à decisão</h2>
       <p>A maioria das entregas de mercado para no primeiro degrau: mostra o número e para por aí. Aqui, a entrega vai até o último: dizer o que fazer a respeito.</p>
     </div>
-    <div class="method-strip reveal">
+    <div class="method-strip reveal-down">
       <div class="method-step m1"><div class="num">Descritivo</div><p>O que aconteceu</p></div>
       <div class="method-step m2"><div class="num">Diagnóstico</div><p>Por que aconteceu</p></div>
       <div class="method-step m3"><div class="num">Preditivo</div><p>O que vai acontecer</p></div>
@@ -113,17 +117,19 @@
   </div>
 </section>
 
+<div class="container"><div class="section-divider"></div></div>
+
 <section class="split-section">
   <div class="container">
     <div class="split-grid">
-      <div class="split-media reveal"><div class="visual-panel purple" role="img" aria-label="O resultado não é um número. É uma decisão.">
+      <div class="split-media reveal-left"><div class="visual-panel purple" role="img" aria-label="O resultado não é um número. É uma decisão.">
         <div class="vp-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"/><path d="M11 20V4"/><path d="M18 20v-7"/></svg></div>
         <span class="vp-dot d1"></span>
         <span class="vp-dot d2"></span>
         <span class="vp-dot d3"></span>
         <span class="vp-dot d4"></span>
       </div></div>
-      <div class="split-text reveal">
+      <div class="split-text reveal-right">
         <span class="eyebrow c-purple">Diferencial</span>
         <h2>O resultado não é um número. É uma decisão.</h2>
         <p>Enquanto a maioria devolve um relatório bonito e te deixa sozinho com ele, aqui você recebe a decisão pronta: o que fazer, por que fazer, e o impacto esperado de fazer.</p>
@@ -136,6 +142,8 @@
     </div>
   </div>
 </section>
+
+<div class="container"><div class="section-divider"></div></div>
 
 <section>
   <div class="container">
@@ -156,6 +164,8 @@
   </div>
 </section>
 
+<div class="container"><div class="section-divider"></div></div>
+
 <section>
   <div class="container">
     <div class="section-head reveal">
@@ -171,25 +181,25 @@
         <p>Analytics, machine learning, deep learning, implementação de IA e chatbots.</p>
         <span class="cat-link">Ver soluções →</span>
       </a>
-      <a href="servicos/desenvolvimento.html" class="cat-card reveal">
+      <a href="servicos/desenvolvimento.html" class="cat-card reveal-left">
         <div class="icon-badge teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6L3 12l6 6"/><path d="M15 6l6 6-6 6"/></svg></div>
         <h3>Engenharia de software</h3>
         <p>Sites, sistemas web, aplicações desktop e apps mobile.</p>
         <span class="cat-link">Ver soluções →</span>
       </a>
-      <a href="servicos/processos.html" class="cat-card reveal">
+      <a href="servicos/processos.html" class="cat-card reveal-right">
         <div class="icon-badge coral"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="5" cy="6" r="2.4"/><circle cx="19" cy="6" r="2.4"/><circle cx="12" cy="18" r="2.4"/><path d="M7 7.5L11 16"/><path d="M17 7.5L13 16"/></svg></div>
         <h3>Engenharia de processos</h3>
         <p>Mapeamento de fluxo, padronização e maximização de velocidade.</p>
         <span class="cat-link">Ver soluções →</span>
       </a>
-      <a href="servicos/automacao.html" class="cat-card reveal">
+      <a href="servicos/automacao.html" class="cat-card reveal-left">
         <div class="icon-badge amber"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"/></svg></div>
         <h3>Automação inteligente</h3>
         <p>Automações com Python e n8n, integrando suas ferramentas.</p>
         <span class="cat-link">Ver soluções →</span>
       </a>
-      <a href="servicos/suporte.html" class="cat-card reveal">
+      <a href="servicos/suporte.html" class="cat-card reveal-right">
         <div class="icon-badge green"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L4 17l3 3 5.3-5.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2-2 2.6-2.6z"/></svg></div>
         <h3>Infraestrutura &amp; suporte técnico</h3>
         <p>Manutenção de PCs, celulares, impressoras e backup de dados.</p>
@@ -201,7 +211,7 @@
 
 <section>
   <div class="container">
-    <div class="cta-banner reveal">
+    <div class="cta-banner reveal-up">
       <h2>Pronto pra transformar dado em decisão?</h2>
       <p>Conte o desafio e receba um diagnóstico claro do que faz sentido pra sua realidade.</p>
       <a href="contato.html" class="btn btn-primary">Solicitar diagnóstico</a>

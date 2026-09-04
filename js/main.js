@@ -23,11 +23,6 @@ sidebarClose?.addEventListener('click', closeSidebar);
 overlay?.addEventListener('click', closeSidebar);
 document.querySelectorAll('.side-link').forEach((link) => link.addEventListener('click', closeSidebar));
 
-// ===== Entrada imediata do hero =====
-document.querySelectorAll('.hero-enter').forEach((el, i) => {
-  requestAnimationFrame(() => setTimeout(() => el.classList.add('in'), 40));
-});
-
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 // ===== Transição suave entre páginas =====
@@ -49,18 +44,24 @@ if (!prefersReducedMotion) {
 // ===== Cards com leve inclinação seguindo o mouse (delicada, não mecânica) =====
 if (!prefersReducedMotion) {
   document.querySelectorAll('.cat-card, .service-item').forEach((card) => {
+    card.addEventListener('mouseenter', () => {
+      card.dataset.hovering = 'true';
+      const icon = card.querySelector('.icon-badge');
+      if (icon) icon.style.transform = '';
+    });
     card.addEventListener('mousemove', (e) => {
       const rect = card.getBoundingClientRect();
       const px = (e.clientX - rect.left) / rect.width - 0.5;
       const py = (e.clientY - rect.top) / rect.height - 0.5;
-      const rx = (-py * 3).toFixed(2);
-      const ry = (px * 3).toFixed(2);
+      const rx = (-py * 9).toFixed(2);
+      const ry = (px * 9).toFixed(2);
       // uma transição curta suaviza o movimento sem deixar o card
       // "correndo atrás" do cursor (o problema de antes era 0.3s)
       card.style.transition = 'transform 0.15s ease-out';
       card.style.transform = `translateY(-3px) perspective(900px) rotateX(${rx}deg) rotateY(${ry}deg)`;
     });
     card.addEventListener('mouseleave', () => {
+      card.dataset.hovering = 'false';
       card.style.transition = 'transform 0.5s cubic-bezier(0.16,1,0.3,1)';
       card.style.transform = '';
     });
@@ -89,6 +90,9 @@ if (!prefersReducedMotion) {
 const parallaxImgs = document.querySelectorAll('.hero-media img, .page-media img, .split-media img, .parallax-banner img, .page-media .visual-panel, .split-media .visual-panel, .parallax-banner .visual-panel');
 const blobLayers = document.querySelectorAll('.hero-layer.l1, .hero-layer.l2');
 const mountainLayers = document.querySelectorAll('.mountain-layer');
+const parallaxCards = document.querySelectorAll('.cat-card, .service-item');
+const parallaxIcons = document.querySelectorAll('.icon-badge');
+const parallaxBlocks = document.querySelectorAll('.section-head, .split-text, .callout, .method-strip, .stat-row, .cta-banner, .faq-item, .side-card');
 
 if (!prefersReducedMotion) {
   let ticking = false;
@@ -117,6 +121,66 @@ if (!prefersReducedMotion) {
       layer.style.transform = `translate3d(0, ${-offset}px, 0)`;
     });
 
+    // Cards de solução: só recebem o parallax quando NÃO estão em
+    // hover (não briga com a inclinação 3D) E já terminaram a
+    // animação de entrada lateral (senão o transform inline do
+    // parallax cortava a entrada pela metade, sobrescrevendo o
+    // translateX que ainda estava em andamento). Quando o card sai
+    // da tela, limpa o transform inline — senão ele fica "grudado"
+    // e trava o reset da animação de entrada pra próxima vez.
+    if (!mobile) {
+      parallaxCards.forEach((card) => {
+        if (card.dataset.hovering === 'true') return;
+        if (!card.classList.contains('in')) {
+          if (card.style.transform) card.style.transform = '';
+          return;
+        }
+        const rect = card.getBoundingClientRect();
+        const center = rect.top + rect.height / 2 - vh / 2;
+        const offset = Math.max(Math.min(center * 0.07, 34), -34);
+        card.style.transition = 'transform 0.2s ease-out';
+        card.style.transform = `translateY(${offset}px)`;
+      });
+    }
+
+    // Ícones: profundidade independente do card, mais perceptível.
+    // Se o card-pai estiver em hover, limpa o transform inline pra
+    // não brigar com o efeito de escala/rotação (definido em CSS).
+    parallaxIcons.forEach((icon) => {
+      const parentCard = icon.closest('.cat-card, .service-item');
+      if (parentCard && parentCard.dataset.hovering === 'true') {
+        icon.style.transform = '';
+        return;
+      }
+      const rect = icon.getBoundingClientRect();
+      const center = rect.top + rect.height / 2 - vh / 2;
+      const offset = Math.max(Math.min(center * 0.09, 40), -40);
+      icon.style.transform = `translateY(${offset}px)`;
+    });
+
+    // Blocos de texto/seção: mesmo princípio do hero — desce, o
+    // bloco que já apareceu recua um pouco (como se ficasse "atrás"
+    // do que vem a seguir); sobe, tudo volta suavemente pro centro.
+    // Só entra em ação depois que a entrada (fade/lateral) já
+    // terminou, senão cortaria essa animação pela metade. Ao sair
+    // da tela, limpa o transform inline — é exatamente isso que
+    // fazia o texto "perder a animação" ao rolar de volta: sobrava
+    // um transform grudado, que bloqueava a CSS de resetar o estado
+    // escondido (opacidade/posição) pra tocar de novo depois.
+    if (!mobile) {
+      parallaxBlocks.forEach((block) => {
+        if (!block.classList.contains('in')) {
+          if (block.style.transform) block.style.transform = '';
+          return;
+        }
+        const rect = block.getBoundingClientRect();
+        const center = rect.top + rect.height / 2 - vh / 2;
+        const offset = Math.max(Math.min(center * 0.025, 18), -18);
+        block.style.transition = 'transform 0.2s ease-out';
+        block.style.transform = `translateY(${offset}px)`;
+      });
+    }
+
     ticking = false;
   }
 
@@ -126,12 +190,12 @@ if (!prefersReducedMotion) {
   updateParallax();
 }
 
-// ===== Reveal on scroll =====
-const revealEls = document.querySelectorAll('.reveal');
+// ===== Reveal on scroll (funciona nos dois sentidos: sai da tela, reseta) =====
+const revealEls = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-up, .reveal-down, .hero-enter');
 if (revealEls.length && 'IntersectionObserver' in window) {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) { entry.target.classList.add('in'); observer.unobserve(entry.target); }
+      entry.target.classList.toggle('in', entry.isIntersecting);
     });
   }, { threshold: 0.15 });
   revealEls.forEach((el) => observer.observe(el));

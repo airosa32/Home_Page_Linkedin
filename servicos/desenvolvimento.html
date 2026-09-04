@@ -5,15 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Desenvolvimento — Sites, sistemas, desktop e mobile</title>
 <meta name="description" content="Sites institucionais, sistemas web em Django, aplicações desktop em Python e apps mobile em Flutter.">
+
+<!-- Open Graph — usado por LinkedIn, WhatsApp, Facebook etc. pra montar
+     o preview quando o link é compartilhado. og:image precisa ser uma
+     URL absoluta (o crawler busca direto, sem carregar o resto do site). -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Airosa">
+<meta property="og:title" content="Desenvolvimento — Sites, sistemas, desktop e mobile">
+<meta property="og:description" content="Sites institucionais, sistemas web em Django, aplicações desktop em Python e apps mobile em Flutter.">
+<meta property="og:image" content="https://airosa32.github.io/Home_Page_Linkedin/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://airosa32.github.io/Home_Page_Linkedin/">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Desenvolvimento — Sites, sistemas, desktop e mobile">
+<meta name="twitter:description" content="Sites institucionais, sistemas web em Django, aplicações desktop em Python e apps mobile em Flutter.">
+<meta name="twitter:image" content="https://airosa32.github.io/Home_Page_Linkedin/og-image.png">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../css/style.css">
 </head>
-<body>
+<body class="tint-teal">
+<div class="scroll-progress" aria-hidden="true"><div class="scroll-progress-bar"></div></div>
 <div class="bg-ambient" aria-hidden="true">
   <span class="a1"></span>
+
   <span class="a2"></span>
   <span class="a3"></span>
+
 </div>
 <button class="menu-toggle" aria-label="Abrir menu"><span class="hamburger"><span></span><span></span><span></span></span></button>
 <aside class="sidebar">
@@ -59,31 +80,31 @@
   <div class="container">
     
     <div class="service-list">
-      <div class="service-item reveal">
+      <div class="service-item reveal-left">
         <div class="icon-badge teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6L3 12l6 6"/><path d="M15 6l6 6-6 6"/></svg></div>
         <h3>Sites institucionais (HTML/CSS/JS)</h3>
         <p>Sites rápidos, leves, sem necessidade de servidor complexo.</p>
         <div class="who"><b>Pra quem é:</b> portfólios, landing pages, presença online simples.</div>
       </div>
-      <div class="service-item reveal">
+      <div class="service-item reveal-right">
         <div class="icon-badge teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="8" ry="3"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
         <h3>Sistemas web (Django)</h3>
         <p>Plataformas robustas com banco de dados, painel administrativo e chatbot integrado.</p>
         <div class="who"><b>Pra quem é:</b> empresas que precisam de sistema próprio (cadastro, gestão, etc.).</div>
       </div>
-      <div class="service-item reveal">
+      <div class="service-item reveal-left">
         <div class="icon-badge teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M8 20h8M12 16v4"/></svg></div>
         <h3>Aplicações desktop (Python)</h3>
         <p>Programas instaláveis pra Windows/Linux, rodando localmente.</p>
         <div class="who"><b>Pra quem é:</b> negócios que precisam de ferramenta interna offline.</div>
       </div>
-      <div class="service-item reveal">
+      <div class="service-item reveal-right">
         <div class="icon-badge teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 18h4"/></svg></div>
         <h3>Apps mobile (Flutter/Dart/Flet)</h3>
         <p>Aplicativos multiplataforma (Android/iOS) a partir de uma única base de código.</p>
         <div class="who"><b>Pra quem é:</b> quem quer levar o serviço pro celular do cliente.</div>
       </div>
-      <div class="service-item reveal">
+      <div class="service-item reveal-left">
         <div class="icon-badge teal"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 11A8 8 0 1 0 18.5 16"/><path d="M20 4v7h-7"/></svg></div>
         <h3>Manutenção e evolução de sistemas existentes</h3>
         <p>Correção de bugs, novas funcionalidades e atualização de projetos já em produção.</p>
@@ -92,6 +113,8 @@
     </div>
   </div>
 </section>
+
+<div class="container"><div class="section-divider teal"></div></div>
 
 <section>
   <div class="container">
@@ -112,6 +135,8 @@
   </div>
 </section>
 
+<div class="container"><div class="section-divider teal"></div></div>
+
 <section>
   <div class="container">
     <div class="cta-banner reveal">
@@ -123,6 +148,33 @@
 </section>
 
 </main>
+<div class="chat-widget" id="chatWidget">
+  <button class="chat-toggle" id="chatToggle" aria-label="Abrir chat de suporte">
+    <svg class="chat-icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H8l-4 4V5z"/></svg>
+    <svg class="chat-icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></svg>
+    <span class="chat-toggle-dot"></span>
+  </button>
+  <div class="chat-panel" id="chatPanel">
+    <div class="chat-header">
+      <div class="chat-header-info">
+        <div class="chat-avatar">A</div>
+        <div>
+          <div class="chat-title">Assistente Airosa</div>
+          <div class="chat-status"><span class="chat-status-dot"></span>Online</div>
+        </div>
+      </div>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg bot">Oi! Posso ajudar a entender qual serviço faz mais sentido pro seu caso. O que você precisa?</div>
+    </div>
+    <form class="chat-input-row" id="chatForm">
+      <input type="text" id="chatInput" placeholder="Digite sua pergunta..." autocomplete="off">
+      <button type="submit" class="chat-send" aria-label="Enviar mensagem">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2 11 13"/><path d="M22 2 15 22l-4-9-9-4 20-7z"/></svg>
+      </button>
+    </form>
+  </div>
+</div>
 <footer class="site-footer">
   <div class="container">
     <div class="footer-grid">
@@ -153,5 +205,6 @@
   </div>
 </footer>
 <script src="../js/main.js"></script>
+<script src="../js/chat-widget.js"></script>
 </body>
 </html>

@@ -71,9 +71,12 @@ O GitHub Pages não roda backend, então o formulário sozinho não manda e-mail
 
 ## Assistente de IA (widget de chat)
 
-O site tem um widget de chat completo (botão flutuante, painel, indicador de "digitando", histórico de mensagens) em `js/chat-widget.js`. A interface está pronta — falta conectar a um serviço de IA de verdade.
+O site tem um widget de chat completo (botão flutuante, painel, indicador de "digitando", histórico de mensagens) em `js/chat-widget.js`. **Ele já funciona hoje**, sem precisar de nenhuma configuração: tem uma base de conhecimento local (dentro do próprio `chat-widget.js`, na constante `KNOWLEDGE_BASE`) com respostas sobre serviços, tecnologias, contato, orçamento e prazo — quando alguém pergunta algo, o widget procura por palavras-chave e responde com o conteúdo certo.
 
-**Por quê não vem conectado:** colocar uma chave de API de IA direto no JavaScript exporia essa chave pra qualquer visitante que abrisse "Ver código-fonte" da página. Por segurança, o endpoint fica vazio até ser configurado.
+Isso **não é uma IA de verdade** (não entende contexto, só bate palavra-chave), mas cobre bem as perguntas mais comuns sem depender de nenhum serviço externo. Pra editar as respostas ou adicionar novas perguntas, mexa direto na lista `KNOWLEDGE_BASE` no arquivo.
+
+### Upgrade pra uma IA de verdade (opcional)
+Se quiser respostas mais inteligentes (que entendem qualquer pergunta, não só palavras-chave), dá pra conectar um serviço de IA de verdade. **Por quê não vem assim por padrão:** colocar uma chave de API de IA direto no JavaScript exporia essa chave pra qualquer visitante que abrisse "Ver código-fonte" da página. Por segurança, esse modo só ativa se você configurar um endpoint próprio.
 
 ### Como ativar (gratuito, via Cloudflare Workers)
 
@@ -128,7 +131,7 @@ export default {
 
 Esse mesmo esquema funciona com qualquer outro provedor de IA (OpenAI, Gemini, etc.) — só muda a URL e o corpo da requisição dentro do Worker.
 
-**Status atual:** endpoint vazio, widget funcional só como interface.
+**Status atual:** respondendo com a base de conhecimento local (funcional). Endpoint de IA de verdade ainda não configurado (opcional).
 
 ---
 

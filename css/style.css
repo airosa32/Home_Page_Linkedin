@@ -434,6 +434,14 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
+/* Tom de fundo sutil por categoria — cada página de serviço ganha
+   uma leve identidade de cor, em vez de todas serem o mesmo navy. */
+body.tint-purple { background: radial-gradient(ellipse 900px 600px at 15% 0%, rgba(127,90,255,0.07), transparent 60%), var(--bg); }
+body.tint-teal    { background: radial-gradient(ellipse 900px 600px at 15% 0%, rgba(35,181,192,0.07), transparent 60%), var(--bg); }
+body.tint-coral   { background: radial-gradient(ellipse 900px 600px at 15% 0%, rgba(242,99,95,0.07), transparent 60%), var(--bg); }
+body.tint-amber   { background: radial-gradient(ellipse 900px 600px at 15% 0%, rgba(255,201,74,0.07), transparent 60%), var(--bg); }
+body.tint-green   { background: radial-gradient(ellipse 900px 600px at 15% 0%, rgba(69,208,138,0.07), transparent 60%), var(--bg); }
+
 img { max-width: 100%; display: block; }
 a { color: inherit; text-decoration: none; }
 
@@ -557,7 +565,22 @@ p { margin: 0 0 1em; color: var(--text-dim); max-width: 62ch; }
   font-weight: 600;
   color: var(--text);
 }
-.logo span { color: var(--brand); }
+.logo span {
+  color: var(--brand); /* fallback pra navegador que não suporta o gradiente em texto */
+  background: linear-gradient(90deg, var(--brand), var(--teal), var(--coral), var(--brand));
+  background-size: 300% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: logoShimmer 6s linear infinite;
+}
+@keyframes logoShimmer {
+  0%   { background-position: 0% 50%; }
+  100% { background-position: 300% 50%; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .logo span { animation: none; background: none; -webkit-text-fill-color: var(--brand); color: var(--brand); }
+}
 
 .nav-links {
   display: flex;
@@ -729,16 +752,45 @@ body.page-leaving { opacity: 0; }
   body { transition: none; }
 }
 
+/* ===== Divisor decorativo entre seções ===== */
+.section-divider {
+  width: 120px;
+  height: 3px;
+  margin: 44px auto;
+  border-radius: 3px;
+  background: linear-gradient(90deg, transparent, var(--brand), var(--teal), transparent);
+  opacity: 0.6;
+  box-shadow: 0 0 16px rgba(127,90,255,0.35);
+}
+.section-divider.coral { background: linear-gradient(90deg, transparent, var(--coral), var(--amber), transparent); box-shadow: 0 0 16px rgba(242,99,95,0.3); }
+.section-divider.green { background: linear-gradient(90deg, transparent, var(--green), var(--teal), transparent); box-shadow: 0 0 16px rgba(69,208,138,0.3); }
+
 /* ===== Reveal on scroll ===== */
+
+
 .reveal {
   opacity: 0;
-  transform: translateY(14px);
+  transform: translateY(60px);
   filter: blur(6px);
   transition: opacity 0.9s ease, transform 0.9s ease, filter 0.9s ease;
 }
 .reveal.in { opacity: 1; transform: translateY(0); filter: blur(0); }
+
+/* Entrada lateral — usada nas seções lado a lado (texto de um lado,
+   imagem do outro), cada bloco vindo da sua própria borda. */
+.reveal-left, .reveal-right, .reveal-up, .reveal-down {
+  opacity: 0;
+  filter: blur(6px);
+  transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1), filter 0.9s ease;
+}
+.reveal-left { transform: translateX(-100px); }
+.reveal-right { transform: translateX(100px); }
+.reveal-up { transform: translateY(-70px); }
+.reveal-down { transform: translateY(70px); }
+.reveal-left.in, .reveal-right.in, .reveal-up.in, .reveal-down.in { opacity: 1; transform: translate(0, 0); filter: blur(0); }
+
 @media (prefers-reduced-motion: reduce) {
-  .reveal { opacity: 1; transform: none; filter: none; transition: none; }
+  .reveal, .reveal-left, .reveal-right, .reveal-up, .reveal-down, .hero-enter { opacity: 1; transform: none; filter: none; transition: none; }
   html { scroll-behavior: auto; }
 }
 
@@ -757,7 +809,17 @@ body.page-leaving { opacity: 0; }
   grid-template-columns: 1fr;
   gap: 14px;
 }
-@media (min-width: 700px) { .service-list { grid-template-columns: 1fr 1fr; } }
+@media (min-width: 700px) {
+  .service-list { grid-template-columns: 1fr 1fr; }
+  /* Se o total de cards for ímpar, o último fica sozinho na última
+     linha — em vez de ficar "grudado" na esquerda, ele ocupa as
+     duas colunas e centraliza, com a mesma largura dos outros. */
+  .service-list > .service-item:last-child:nth-child(odd) {
+    grid-column: 1 / -1;
+    max-width: calc(50% - 7px);
+    margin: 0 auto;
+  }
+}
 .service-item {
   background: var(--surface);
   border: 1px solid var(--border);
@@ -997,10 +1059,22 @@ form.contact-form { display: flex; flex-direction: column; gap: 14px; }
 
 .sidebar-cta { margin-top: 18px; justify-content: center; }
 
-.menu-toggle {
+.mobile-topbar {
+  display: none;
   position: fixed;
-  top: 16px; left: 16px;
-  z-index: 350;
+  top: 0; left: 0; right: 0;
+  height: 62px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 16px;
+  z-index: 340;
+  background: rgba(11,18,32,0.85);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--border);
+}
+@media (max-width: 959px) { .mobile-topbar { display: flex; } }
+
+.menu-toggle {
   background: var(--surface);
   border: 1px solid var(--border);
   border-radius: 9px;
@@ -1099,6 +1173,7 @@ form.contact-form { display: flex; flex-direction: column; gap: 14px; }
 @media (min-width: 960px) { .sidebar-overlay { display: none !important; } }
 
 .main-content { min-height: 100vh; }
+@media (max-width: 959px) { .main-content { padding-top: 62px; } }
 @media (min-width: 960px) {
   .main-content { margin-left: 264px; }
   .site-footer { margin-left: 264px; }
@@ -1120,6 +1195,24 @@ form.contact-form { display: flex; flex-direction: column; gap: 14px; }
 .icon-badge.amber { background: rgba(255,201,74,0.14); color: var(--amber); }
 .icon-badge.green { background: rgba(69,208,138,0.14); color: var(--green); }
 .icon-badge.white { background: rgba(255,255,255,0.16); color: #fff; }
+
+/* Brilho que "acende" no ícone quando o card entra na tela — usa
+   currentColor, então pega automaticamente a cor certa de cada
+   variante (purple/teal/coral/amber/green) sem precisar repetir. */
+@keyframes iconGlowIn {
+  0%, 100% { box-shadow: 0 0 0 rgba(0,0,0,0); }
+  45%      { box-shadow: 0 0 22px currentColor; }
+}
+.reveal.in .icon-badge,
+.reveal-left.in .icon-badge,
+.reveal-right.in .icon-badge {
+  animation: iconGlowIn 1.3s ease-out;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal.in .icon-badge,
+  .reveal-left.in .icon-badge,
+  .reveal-right.in .icon-badge { animation: none; }
+}
 
 /* ===== Hero with image ===== */
 .hero-v2 {
@@ -1326,9 +1419,10 @@ form.contact-form { display: flex; flex-direction: column; gap: 14px; }
   .hero-layer.l3, .hero-layer.l4 { animation: none; }
 }
 
-/* Entrada imediata do hero (sem esperar scroll) */
-.hero-enter { opacity: 0; transform: translateY(16px); transition: opacity 0.7s ease, transform 0.7s ease; }
-.hero-enter.in { opacity: 1; transform: translateY(0); }
+/* Hero — mesmo sistema do .reveal (bidirecional, mesma força),
+   só com um nome próprio pra manter o escalonamento por nth-child. */
+.hero-enter { opacity: 0; transform: translateY(40px); filter: blur(6px); transition: opacity 0.7s ease, transform 0.7s ease, filter 0.7s ease; }
+.hero-enter.in { opacity: 1; transform: translateY(0); filter: blur(0); }
 .hero-enter:nth-child(2) { transition-delay: 0.08s; }
 .hero-enter:nth-child(3) { transition-delay: 0.16s; }
 .hero-enter:nth-child(4) { transition-delay: 0.24s; }
