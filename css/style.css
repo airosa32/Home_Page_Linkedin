@@ -81,6 +81,7 @@ html { scroll-behavior: smooth; overflow-x: hidden; max-width: 100%; }
   width: min(340px, calc(100vw - 48px));
   height: 460px;
   max-height: calc(100vh - 120px);
+  max-height: calc(100dvh - 120px);
   background: var(--bg-soft);
   border: 1px solid var(--border);
   border-radius: var(--radius-lg);
@@ -738,6 +739,9 @@ body.page-leaving { opacity: 0; }
   padding: 76px 0 44px;
   border-bottom: 1px solid var(--border);
 }
+@media (max-width: 700px) {
+  .page-hero { padding-top: 36px; }
+}
 .page-hero .icon-badge { margin-bottom: 20px; }
 .page-hero .eyebrow { margin-bottom: 18px; }
 .page-hero h1 { margin-bottom: 16px; font-size: clamp(28px, 4.4vw, 42px); max-width: 20ch; }
@@ -948,7 +952,8 @@ form.contact-form { display: flex; flex-direction: column; gap: 14px; }
   position: fixed;
   top: 0; left: 0;
   width: 264px;
-  height: 100vh;
+  height: 100vh;  /* fallback pra navegador antigo */
+  height: 100dvh; /* altura "de verdade" no mobile — 100vh não considera a barra de endereço aparecendo/sumindo */
   background: var(--bg-soft);
   border-right: 1px solid var(--border);
   padding: 22px 18px;
@@ -1150,7 +1155,7 @@ form.contact-form { display: flex; flex-direction: column; gap: 14px; }
 .sidebar-overlay.show { display: block; }
 @media (min-width: 960px) { .sidebar-overlay { display: none !important; } }
 
-.main-content { min-height: 100vh; }
+.main-content { min-height: 100vh; min-height: 100dvh; }
 @media (max-width: 959px) { .main-content { padding-top: 62px; } }
 @media (min-width: 960px) {
   .main-content { margin-left: 264px; }
@@ -1197,6 +1202,9 @@ form.contact-form { display: flex; flex-direction: column; gap: 14px; }
   position: relative;
   overflow: hidden;
   padding: 64px 0 0;
+}
+@media (max-width: 700px) {
+  .hero-v2 { padding-top: 30px; }
 }
 .hero-v2 .container {
   display: grid;
