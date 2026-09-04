@@ -1051,7 +1051,7 @@ form.contact-form { display: flex; flex-direction: column; gap: 14px; }
   justify-content: space-between;
   padding: 0 16px;
   z-index: 340;
-  background: rgba(11,18,32,0.85);
+  background: rgba(11,18,32,0.97);
   backdrop-filter: blur(10px);
   border-bottom: 1px solid var(--border);
 }
