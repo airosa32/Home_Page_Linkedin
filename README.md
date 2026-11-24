@@ -119,7 +119,7 @@ export default {
 ```
 
 3. Adicione a variável secreta `ANTHROPIC_API_KEY` nas configurações do Worker, com a chave gerada em [console.anthropic.com](https://console.anthropic.com).
-4. Publique — você recebe uma URL tipo `https://airosa-chat.SEU-USUARIO.workers.dev`.
+4. Publique você recebe uma URL tipo `https://airosa-chat.SEU-USUARIO.workers.dev`.
 5. Em `js/chat-widget.js`, troque:
    ```js
    const AIROSA_CHAT_ENDPOINT = '';
@@ -129,7 +129,7 @@ export default {
    const AIROSA_CHAT_ENDPOINT = 'https://airosa-chat.SEU-USUARIO.workers.dev';
    ```
 
-Esse mesmo esquema funciona com qualquer outro provedor de IA (OpenAI, Gemini, etc.) — só muda a URL e o corpo da requisição dentro do Worker.
+Esse mesmo esquema funciona com qualquer outro provedor de IA (OpenAI, Gemini, etc.) só muda a URL e o corpo da requisição dentro do Worker.
 
 **Status atual:** respondendo com a base de conhecimento local (funcional). Endpoint de IA de verdade ainda não configurado (opcional).
 
