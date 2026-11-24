@@ -1,4 +1,4 @@
-# Airosa — Site de Serviços
+# Airosa: Site de Serviços
 
 Site pessoal de **Tiago Airosa**, reunindo as frentes de atuação em um só lugar: Análise de Dados & IA, Desenvolvimento de Software, Engenharia de Processos, Automação e Suporte Técnico.
 
@@ -55,10 +55,10 @@ Repositório: [`airosa32/Home_Page_Linkedin`](https://github.com/airosa32/Home_P
 
 ## Formulário de contato (recebe por e-mail via Formspree)
 
-O GitHub Pages não roda backend, então o formulário sozinho não manda e-mail. Ele já está programado pra usar o [Formspree](https://formspree.io) (grátis até 50 mensagens/mês) — falta só o ID:
+O GitHub Pages não roda backend, então o formulário sozinho não manda e-mail. Ele já está programado pra usar o [Formspree](https://formspree.io) (grátis até 50 mensagens/mês) falta só o ID:
 
 1. Crie uma conta grátis em [formspree.io](https://formspree.io) com o e-mail `airosa32@gmail.com`.
-2. Crie um novo formulário — você recebe um endpoint tipo `https://formspree.io/f/xxxxxxx`.
+2. Crie um novo formulário você recebe um endpoint tipo `https://formspree.io/f/xxxxxxx`.
 3. Em `contato.html`, troque `SEU_ID_AQUI` pelo código recebido, na linha:
    ```html
    <form ... action="https://formspree.io/f/SEU_ID_AQUI" method="POST">
@@ -71,7 +71,7 @@ O GitHub Pages não roda backend, então o formulário sozinho não manda e-mail
 
 ## Assistente de IA (widget de chat)
 
-O site tem um widget de chat completo (botão flutuante, painel, indicador de "digitando", histórico de mensagens) em `js/chat-widget.js`. **Ele já funciona hoje**, sem precisar de nenhuma configuração: tem uma base de conhecimento local (dentro do próprio `chat-widget.js`, na constante `KNOWLEDGE_BASE`) com respostas sobre serviços, tecnologias, contato, orçamento e prazo — quando alguém pergunta algo, o widget procura por palavras-chave e responde com o conteúdo certo.
+O site tem um widget de chat completo (botão flutuante, painel, indicador de "digitando", histórico de mensagens) em `js/chat-widget.js`. **Ele já funciona hoje**, sem precisar de nenhuma configuração: tem uma base de conhecimento local (dentro do próprio `chat-widget.js`, na constante `KNOWLEDGE_BASE`) com respostas sobre serviços, tecnologias, contato, orçamento e prazo quando alguém pergunta algo, o widget procura por palavras-chave e responde com o conteúdo certo.
 
 Isso **não é uma IA de verdade** (não entende contexto, só bate palavra-chave), mas cobre bem as perguntas mais comuns sem depender de nenhum serviço externo. Pra editar as respostas ou adicionar novas perguntas, mexa direto na lista `KNOWLEDGE_BASE` no arquivo.
 
