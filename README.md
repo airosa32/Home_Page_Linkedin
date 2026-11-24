@@ -145,4 +145,4 @@ Esse mesmo esquema funciona com qualquer outro provedor de IA (OpenAI, Gemini, e
 
 ## Créditos
 
-Desenvolvido para **Tiago Airosa** — [LinkedIn](https://www.linkedin.com/in/tiago-airosa) · [GitHub](https://github.com/airosa32)
+Desenvolvido por **Tiago Airosa**  [LinkedIn](https://www.linkedin.com/in/tiago-airosa) · [GitHub](https://github.com/airosa32)
