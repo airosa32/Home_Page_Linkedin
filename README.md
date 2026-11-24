@@ -2,7 +2,7 @@
 
 Site pessoal de **Tiago Airosa**, reunindo as frentes de atuação em um só lugar: Análise de Dados & IA, Desenvolvimento de Software, Engenharia de Processos, Automação e Suporte Técnico.
 
-Construído em **HTML, CSS e JavaScript puro** — sem framework, sem build, sem dependência de servidor. Hospedado gratuitamente no GitHub Pages.
+Construído em **HTML, CSS e JavaScript puro**  sem framework, sem build, sem dependência de servidor. Hospedado gratuitamente no GitHub Pages.
 
 ---
 
