@@ -63,7 +63,7 @@ O GitHub Pages não roda backend, então o formulário sozinho não manda e-mail
    ```html
    <form ... action="https://formspree.io/f/SEU_ID_AQUI" method="POST">
    ```
-4. Pronto — o formulário já mostra "Enviando...", confirma com ícone verde se der certo, ou avisa com ícone laranja se falhar. Nada mais precisa ser feito no código.
+4. Pronto o formulário já mostra "Enviando...", confirma com ícone verde se der certo, ou avisa com ícone laranja se falhar. Nada mais precisa ser feito no código.
 
 **Status atual:** endpoint ainda não configurado (`SEU_ID_AQUI` no lugar do ID real).
 
